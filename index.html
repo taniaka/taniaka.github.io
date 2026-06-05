@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cine de EE.UU 2014–2023 — perfil socio-demográfico</title>
+  <meta name="robots" content="noindex" />
+  <title>Tendencias del cine estadounidense (2014-2023): temáticas y demografía.</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -21,18 +22,27 @@
     .subtitle {
       color: #555;
       margin-bottom: 3rem;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
+    }
+    .intro {
+      margin-bottom: 3.5rem;
+      line-height: 1.65;
+    }
+    .intro p {
+      color: #333;
+      font-size: 1rem;
+      margin-bottom: 1rem;
     }
     .chart-block {
       margin-bottom: 3.5rem;
     }
     .chart-block h2 {
-      font-size: 1.15rem;
+      font-size: 1.3rem;
       margin-bottom: 0.3rem;
     }
     .chart-block p {
       color: #555;
-      font-size: 0.88rem;
+      font-size: 1rem;
       margin-bottom: 0.75rem;
     }
     iframe {
@@ -45,42 +55,71 @@
 </head>
 <body>
 
-  <h1>Cine de EE.UU 2014–2023</h1>
+  <h1>Tendencias del cine estadounidense (2014-2023): temáticas y demografía</h1>
   <p class="subtitle">7.000 películas · Fuente: IMDB y TMDB</p>
+
+  <section class="intro">
+    <p>Este proyecto busca analizar el cine estadounidense de los años 2014-2023 desde dos puntos de vista: los temas que abordan las películas y el perfil demográfico de directores y actores.</p>
+    <p> ¿Es verdad que los directores prefieren trabajar con actores de su generación? ¿Es verdad que las actrices tienen cada vez más protaginismo? ¿Qué géneros y qué temáticas han ganado popularidad en estos años? Intentaremos responder a estas y otras preguntas, contrastando las respuestas con datos.</p>
+    <p>El dataset proviene de dos fuentes públicas: <strong><a href="https://developer.imdb.com/non-commercial-datasets/">IMDb Non-Commercial Datasets</a></strong> y <strong><a href="https://www.kaggle.com/datasets/asaniczka/tmdb-movies-
+dataset-2023-930k-movies">TMDB Movies Dataset</a></strong>, este último utilizado principalmente para obtener el país de producción. El dataset final contiene unas 7.000 películas.</p>
+    <p>El scope corresponde a largometrajes de ficción (co)producidos o coproducidos por Estados Unidos, estrenados entre 2014 y 2023, con al menos 300 votos en IMDb, lo que permite descartar películas sin estreno real sin tampoco limitarse a grandes taquillazos. Se han excluido documentales, animación, series y cortometrajes.</p>
+  </section>
 
   <div class="chart-block">
     <h2>1. Proporción de películas por género principal</h2>
+    <p>Hablar de géneros muchas veces es reducir las obras a meras etiquetas. No obstante, y la distribución de películas por género es también un reflejo de las apuestas de los estudios y a veces del agenda político.</p>
+    <p>Cada celda muestra el porcentaje de películas de ese género en el total anual; cuanto más oscura, mayor presencia. En esta gráfica solo se considera el género principal de cada película, es decir el que ocupa la primera posición en la lista de géneros en IMDB.</p>
     <iframe src="assets/plots/1primarygenres.html" height="520" frameborder="0"></iframe>
+    <p>A pesar de que no se notan muy grandes cambios en la distribución de géneros, sí se observan algunas tendencias interesantes: como una subida de películas de terror y de acción junto con una muy importante bajada de las comedias.</p>
   </div>
 
   <div class="chart-block">
     <h2>2. Popularidad y valoración media por género</h2>
+    <p>Además de contar las películas por género, nos interesa saber si los más votados son también los mejor valorados. En este caso consideramos todos los géneros de la película, 
+      es decir si una película está clasificada en múltiples géneros se contabilizan en todos ellos.</p>
+    <p>Cada burbuja representa un género: el eje X es el número medio de votos, el eje Y la valoración media IMDb, y el tamaño el número de películas.</p>
     <iframe src="assets/plots/2genreanimated.html" height="700" frameborder="0"></iframe>
   </div>
 
   <div class="chart-block">
     <h2>3. Evolución del ranking de keywords</h2>
+    <p>¿Hay temas específicos que han ganado protagonismo en la última década?</p>
+    <p>El gráfico muestra la evolución del ranking de los 20 keywords que se han utilizado con más frecuencia entre 2014 y 2023.</p>
     <iframe src="assets/plots/3keyword.html" height="680" frameborder="0"></iframe>
+    <p>Entre los temas ganadores destacaremos "LGBT", "coming of age" y "serial killer", mientras que las biografías, al revés, han ido perdiendo relevancia.</p>
   </div>
 
   <div class="chart-block">
     <h2>4. Representación de actrices (2014–2023)</h2>
+    <p>¿Es cierto que en los últimos años se ha logrado un mayor representación de mujeres en el cine? Si es así, ¿es uniforme este cambio entre géneros?</p>
+    <p>El gráfico muestra dos métricas por año: el porcentaje medio de actrices en el elenco y el porcentaje de películas con protagonista femenina (línea gris).</p>
     <iframe src="assets/plots/4female.html" height="560" frameborder="0"></iframe>
+    <p>Aún es temprano para hablar de paridad pero los datos apuntan a un progreso gradual sobre todo en la proporción de protagonistas femeninas</p>
   </div>
 
   <div class="chart-block">
     <h2>5. Evolución de la distribución de edades</h2>
+    <p>¿Está envejeciendo el cine estadounidense? ¿Cómo ha cambiado la edad mediana de los directores y actores?</p>
     <iframe src="assets/plots/5age.html" height="730" frameborder="0"></iframe>
+    <p>La respuesta es afirmativa: En solo 10 años ha habido una reducción significativa en la proporción de jóvenes en el cine.</p>
   </div>
 
   <div class="chart-block">
     <h2>6. Edad del director vs. edad media del reparto</h2>
+    <p>La intuición sugiere que los directores tienden a trabajar con actores de su generación. ¿Confirman los datos esta hipótesis? </p>¿
+    <p><Cada punto es una película, coloreada por género principal. La línea roja muestra la edad media del reparto para cada bin de edad del director, con barras de ±1 desviación estándar. La diagonal punteada marca el punto de igualdad de edades. Haz clic en los géneros de la leyenda para aislarlos.</p>
     <iframe src="assets/plots/6avgage.html" height="600" frameborder="0"></iframe>
+    <p>La tendencia es muy clara: los directores no necesariamente trabajan con actores de su misma generación, pero sí tienden a elegir actores mayores según ellos mismos se van haciendo mayores.</p>
   </div>
 
   <div class="chart-block">
     <h2>7. Distribución de edad del director por género</h2>
+    <p>¿Qué géneros están asociados a directores veteranos  y cuáles a directores más jóvenes?</p>
+    <p>El gráfico muestra la distribución de edad del director para cada género. La línea marca la mediana. Solo se incluyen géneros con al menos 50 películas.</p>
     <iframe src="assets/plots/7genresage.html" height="720" frameborder="0"></iframe>
+    <p>El resultado es bastante previsible: los géneros más "clásicos", como cine de guerra o historia, tienden a estar asociados a directores veteranos, 
+      mientras que películas de terror o de ciencia ficción tienden a estar asociadas a directores más jóvenes.</p>
   </div>
 
 </body>
